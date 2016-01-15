@@ -29,7 +29,7 @@
 - name: "Install Packages | pip | {{ python_packages }}"
   pip:
     executable: "{{ python_pip_executable }}"
-    state: "{% if item is 'ansible' %} present {% else %} latest {% endif %}"
+    state: "{%if item is 'ansible' %}present{% else %}latest{% endif %}"
     name: "{{ item }}"
   with_items: python_packages
   when: python_packages
