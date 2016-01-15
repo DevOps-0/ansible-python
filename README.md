@@ -2,6 +2,7 @@
 
 [Python](https://www.python.org/) - Python is a programming language that lets you work quickly and integrate systems more effectively.
 
+[![Build Status](https://travis-ci.org/telusdigital/ansible-python.svg?branch=master)](https://travis-ci.org/telusdigital/ansible-python)
 [![Platforms](http://img.shields.io/badge/platforms-ubuntu-lightgrey.svg?style=flat)](#)
 
 Description
