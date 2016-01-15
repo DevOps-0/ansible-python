@@ -1,0 +1,12 @@
+---
+- hosts: localhost
+  remote_user: root
+  roles:
+    - role: ansible-python
+  vars:
+    python_packages:
+     - ansible
+    system_role: travis
+    project: travis
+    environment_tier: travis
+    domain: travis
