@@ -4,6 +4,8 @@
   roles:
     - role: ansible-python
   vars:
+    python_packages:
+     - ansible
     system_role: travis
     project: travis
     environment_tier: travis
