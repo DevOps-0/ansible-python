@@ -14,10 +14,6 @@ describe 'ansible-python::default' do
     it { should be_installed.by('apt') }
   end
 
-  describe package('python-dev') do
-    it { should be_installed.by('apt') }
-  end
-
   describe package('python-setuptools') do
     it { should be_installed.by('apt') }
   end
