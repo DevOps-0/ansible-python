@@ -2,10 +2,6 @@ require 'spec_helper'
 
 describe 'ansible-python::default' do
 
-  describe package('python_build_dependencies') do
-    it { should be_installed.by('apt') }
-  end
-
   describe package('python-dev') do
     it { should be_installed.by('apt') }
   end
