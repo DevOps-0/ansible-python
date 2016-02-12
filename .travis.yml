@@ -1,28 +1,15 @@
 ---
 sudo: required
-dist: trusty
-language: python
-python: "2.7"
-
-env:
-  - SITE=test.yml
-
-before_install:
-  - sudo apt-get update -qq
+# docker is required to run tests
+services: docker
 
 install:
-  # Install Ansible
-  - pip install ansible
-
-  # Add ansible.cfg to pick up roles path.
-  - "{ echo '[defaults]'; echo 'roles_path = ../'; } >> ansible.cfg"
+  - bundle install
 
 script:
-  # Check the role/playbook's syntax.
-  - "ansible-playbook -i tests/inventory tests/$SITE --syntax-check"
+  # run kitchen tests (destroy, create, converge, setup, verify and destroy)
+  - bundle exec kitchen test
 
-  # Run the role/playbook with ansible-playbook.
-  - "ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo"
-
-  # Run the role/playbook in --check mode.
-  - "ansible-playbook -i tests/inventory tests/$SITE --connection=local --sudo --check"
+notifications:
+  slack:
+    secure: cUG63tELjDrMwugbSQH8nnaRFtVKHWdOUONAN7LIexUtqssVajmIprWIia/y6VPjICxw+q9Pxjmb3apAid1QKxbqumd+v0xZbWjSLaIJ31YL2HOfz3cota6u1kECZmstqLqwr771zUhgJRwfCBSpOInDDK4G1qVd/Mu4JND7gScYV/zgZ5MTi09J17JjPGUS9UHFo3ZzMfd7LCxkPgh3lcS1cFfiamjHrfz6YtpiieBEBfpwugBEBkazdAIuiAeHmP3Ogk3vphJQ4h4lG8884BdTtnNMvDhl7AWmnIMqKbPDIYe/0IR7O3cxRoUPuHSEi8+GgRlMGCBExh9Em/vaYx1XBR5Tgx9yX0JrY4i6iGHQ1JqDv+jrifjB80fUhuKE3MqGDvkRK3fMwDOEpdTcr2JuaOx0M6ctUt6EmQwdru1vo4ySDFNGZfMGiWzxguqdgccQHmBfPLqrTGwi5khxegFzbWIKjfzPebZlDUoaZ4TvEXpMA7tbKVTOTovpleXs8NnzmP5taNoR3sIgrp6Beqm/a/Z8zN6OLgT7nBNZBI5g65nqUscKamwmtUe9YC0olPXCwFUp3BqEA040f9PPWPI3CtY0OIOMeFisHvyr9WOhGRlNstJ9CxEgnsYH+rHT2q0g4KCGfwCFOWLlS7MRRxYdG/9iEjeBnGJbag1nmKo=
