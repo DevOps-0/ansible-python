@@ -3,7 +3,7 @@
   apt:
     state: latest
     name: "{{ item }}"
-  with_items: python_build_dependencies
+  with_items: "{{ python_build_dependencies }}"
   when: python_build_dependencies
   tags:
     - software-installation
@@ -32,7 +32,7 @@
     executable: "{{ python_pip_executable }}"
     state: "{% if item is ['ansible'] %}present{% else %}latest{% endif %}"
     name: "{{ item }}"
-  with_items: python_packages
+  with_items: "{{ python_packages }}"
   when: python_packages
   tags:
     - software-installation
