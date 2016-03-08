@@ -30,9 +30,13 @@
 - name: "Install Packages | pip | {{ python_packages }}"
   pip:
     executable: "{{ python_pip_executable }}"
-    state: "{% if item is ['ansible'] %}present{% else %}latest{% endif %}"
+    state: latest
     name: "{{ item }}"
+<<<<<<< HEAD
   with_items: '{{ python_packages }}'
+=======
+  with_items: "{{ python_packages }}"
+>>>>>>> ad4a9c1a89decf1e3e6039acb7df1e059ca0e824
   when: python_packages
   tags:
     - software-installation
