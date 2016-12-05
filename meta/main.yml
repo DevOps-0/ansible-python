@@ -6,9 +6,10 @@ galaxy_info:
   company: "TELUS digital"
   description: "Python is a programming language that lets you work quickly and integrate systems more effectively."
   license: MIT
-  min_ansible_version: 1.2
+  min_ansible_version: 1.9
   platforms:
     - name: Ubuntu
       versions:
         - trusty
         - utopic
+        - xenial
